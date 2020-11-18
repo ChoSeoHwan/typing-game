@@ -16,9 +16,17 @@
         "@babel/preset-typescript": "^7.12.1",
         "@types/react": "^16.9.56",
         "@types/react-dom": "^16.9.9",
+        "@typescript-eslint/eslint-plugin": "^4.8.1",
+        "@typescript-eslint/parser": "^4.8.1",
         "babel-loader": "^8.2.1",
         "css-loader": "^5.0.1",
+        "eslint": "^7.13.0",
+        "eslint-config-prettier": "^6.15.0",
+        "eslint-plugin-prettier": "^3.1.4",
+        "eslint-plugin-react": "^7.21.5",
+        "eslint-plugin-simple-import-sort": "^6.0.0",
         "html-webpack-plugin": "^4.5.0",
+        "prettier": "^2.1.2",
         "style-loader": "^2.0.0",
         "typescript": "^4.0.5",
         "webpack": "^5.4.0",
@@ -27,6 +35,10 @@
     },
     "scripts": {
         "start": "webpack serve --mode=development",
-        "build": "webpack --mode=production"
+        "build": "webpack --mode=production",
+        "prettier": "prettier \"src/**/*.{js,jsx,ts,tsx}\"",
+        "prettier:fix": "yarn prettier --write",
+        "lint": "eslint src",
+        "lint:fix": "yarn lint --fix"
     }
 }
