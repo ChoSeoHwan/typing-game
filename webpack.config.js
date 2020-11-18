@@ -1,9 +1,8 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+/* eslint-enable @typescript-eslint/no-var-requires */
 
 module.exports = {
     entry: path.join(__dirname, 'src', 'index.tsx'),
