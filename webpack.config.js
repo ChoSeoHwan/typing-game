@@ -1,5 +1,9 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
 
 module.exports = {
     entry: path.join(__dirname, 'src', 'index.tsx'),
@@ -21,13 +25,17 @@ module.exports = {
             {
                 test: /\.css$/,
                 exclude: /node_modules/,
-                use: ["style-loader", "css-loader"]
+                use: ['style-loader', 'css-loader']
             }
         ]
     },
+    resolve: {
+        plugins: [new TsconfigPathsPlugin()],
+        extensions: ['*', '.js', '.jsx', '.ts', '.tsx']
+    },
     plugins: [
         new HTMLWebpackPlugin({
-            template: "./public/index.html"
+            template: './public/index.html'
         })
     ],
     devServer: {
@@ -35,4 +43,4 @@ module.exports = {
         open: true,
         port: 80
     }
-}
+};
