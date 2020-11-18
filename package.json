@@ -1,7 +1,6 @@
 {
     "name": "typing-game",
     "version": "1.0.0",
-    "main": "index.js",
     "repository": "https://github.com/ChoSeoHwan/typing-game.git",
     "author": "조서환 <wtae1216@naver.com>",
     "license": "MIT",
