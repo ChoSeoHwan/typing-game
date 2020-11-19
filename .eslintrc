@@ -25,16 +25,28 @@
         }
     },
     "rules": {
+        "react/prop-types": [
+            2,
+            {
+                "ignore": [
+                    "children"
+                ]
+            }
+        ],
         "prettier/prettier": "error",
         "@typescript-eslint/no-empty-interface": [
             "error",
-            {"allowSingleExtends": true}
+            {
+                "allowSingleExtends": true
+            }
         ],
         "simple-import-sort/imports": [
             1,
             {
                 "groups": [
                     ["^react", "^\\u0000", "^@?\\w"],
+                    ["^libs"],
+                    ["^modules"],
                     ["^constants"],
                     ["^pages"],
                     ["^components"]
