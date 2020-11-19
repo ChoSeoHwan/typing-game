@@ -4,11 +4,13 @@ import { render } from '@testing-library/react';
 import MyComponent from 'components/MyComponent';
 
 describe('Components | <MyComponent />', () => {
+    const text = 'SeoHwan Cho';
+
     it('should have text', () => {
-        const { getByText } = render(<MyComponent />);
+        const { getByText } = render(<MyComponent text={text} />);
 
-        const text = getByText('This is Test Component');
+        const component = getByText(text);
 
-        expect(text).toBeInTheDocument();
+        expect(component).toBeInTheDocument();
     });
 });

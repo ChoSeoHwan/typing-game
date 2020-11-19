@@ -1,7 +1,15 @@
 import React, { FC } from 'react';
 
-const MyComponent: FC = () => {
-    return <div>This is Test Component</div>;
+export interface MyComponentProps {
+    text: string;
+}
+
+const MyComponent: FC<MyComponentProps> = ({ text }: MyComponentProps) => {
+    return (
+        <div>
+            This is Test Component<p>{text}</p>
+        </div>
+    );
 };
 
 export default MyComponent;
