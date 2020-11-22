@@ -1,5 +1,6 @@
 import React, { FC, HTMLAttributes, PropsWithChildren } from 'react';
 import { css } from '@emotion/core';
+import isPropValid from '@emotion/is-prop-valid';
 
 import { GlobalTheme } from 'styles/Themes';
 
@@ -71,7 +72,9 @@ const ButtonStyled = styled.button<ButtonStyledProps>`
     }};
 `;
 
-const ButtonLinkStyled = styled(Link)<ButtonStyledProps>`
+const ButtonLinkStyled = styled(Link, {
+    shouldForwardProp: isPropValid
+})<ButtonStyledProps>`
     color: ${({ theme }) => theme.colors.primaryText};
 
     &:hover {
