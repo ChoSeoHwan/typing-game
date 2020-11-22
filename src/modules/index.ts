@@ -5,7 +5,7 @@ import createSagaMiddleware from 'redux-saga';
 import { rootSaga } from 'sagas';
 
 import { gameReducer } from 'modules/GameModule';
-import { questionReducer } from 'modules/QuestionModule';
+import { questionsReducer } from 'modules/QuestionsModule';
 import { routerReducer } from 'modules/RouterModule';
 import { storeAction, storeReducer } from 'modules/StoreModule';
 
@@ -13,7 +13,7 @@ import { storeAction, storeReducer } from 'modules/StoreModule';
 export const combinedReducer = combineReducers({
     storeReducer,
     routerReducer,
-    questionReducer,
+    questionsReducer,
     gameReducer
 });
 

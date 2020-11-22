@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 import styled from 'libs/styled';
 
-import { questionAction } from 'modules/QuestionModule';
+import { questionsAction } from 'modules/QuestionsModule';
 
 import Button from 'components/Button';
 import SubTitle from 'components/SubTitle';
@@ -25,7 +25,7 @@ const Error: FC = () => {
     const dispatch = useDispatch();
 
     const handleResetQuestion = () => {
-        dispatch(questionAction.resetQuestions());
+        dispatch(questionsAction.resetQuestions());
     };
 
     return (

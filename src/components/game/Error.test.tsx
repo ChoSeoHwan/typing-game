@@ -4,7 +4,7 @@ import { fireEvent } from '@testing-library/dom';
 import render, { axiosMock } from 'libs/testUtils';
 
 import { store } from 'modules';
-import { questionAction } from 'modules/QuestionModule';
+import { questionsAction } from 'modules/QuestionsModule';
 
 import Status from 'constants/Status';
 
@@ -24,13 +24,13 @@ describe('Components | Game | <Error />', () => {
         const axios = axiosMock();
         axios.onGet('/kakaopay-fe/resources/words').networkError();
 
-        store.dispatch(questionAction.fetchQuestions());
+        store.dispatch(questionsAction.fetchQuestions());
 
         const { getByText } = render(<Error />);
 
         const resetButton = getByText('재시도');
         fireEvent.click(resetButton);
 
-        expect(store.getState().questionReducer.status).toBe(Status.CLEAR);
+        expect(store.getState().questionsReducer.status).toBe(Status.CLEAR);
     });
 });

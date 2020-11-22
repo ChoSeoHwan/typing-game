@@ -2,25 +2,26 @@ import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { RootReducerState } from 'modules';
-import { questionAction } from 'modules/QuestionModule';
+import { questionsAction } from 'modules/QuestionsModule';
 
 import Status from 'constants/Status';
 
 import Error from 'components/game/Error';
 import Loading from 'components/game/Loading';
+import Screen from 'components/game/Screen';
 
 const Game: FC = () => {
     const dispatch = useDispatch();
 
     const questionStatus = useSelector<
         RootReducerState,
-        RootReducerState['questionReducer']['status']
-    >(({ questionReducer }) => questionReducer.status);
+        RootReducerState['questionsReducer']['status']
+    >(({ questionsReducer }) => questionsReducer.status);
 
     // 문제 리스트 로딩
     useEffect(() => {
         if (questionStatus === Status.CLEAR) {
-            dispatch(questionAction.fetchQuestions());
+            dispatch(questionsAction.fetchQuestions());
         }
     }, [questionStatus, dispatch]);
 
@@ -35,7 +36,7 @@ const Game: FC = () => {
             {questionStatus === Status.ERROR && <Error />}
 
             {/* 문제 리스트 로딩 성공 */}
-            {questionStatus === Status.SUCCESS && <div />}
+            {questionStatus === Status.SUCCESS && <Screen />}
         </>
     );
 };

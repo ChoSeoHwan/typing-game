@@ -7,19 +7,19 @@ import Question from 'types/data/Question';
 
 import Status from 'constants/Status';
 
-interface QuestionModuleState {
+interface QuestionsModuleState {
     status: Status;
     data: Question[];
     error: null | string;
 }
 
-const initialState: QuestionModuleState = {
+const initialState: QuestionsModuleState = {
     status: Status.CLEAR,
     data: [],
     error: null
 };
 
-class QuestionModule extends ImmerReducer<QuestionModuleState> {
+class QuestionsModule extends ImmerReducer<QuestionsModuleState> {
     /**
      * question 리스트 로딩 시작
      */
@@ -56,8 +56,8 @@ class QuestionModule extends ImmerReducer<QuestionModuleState> {
     }
 }
 
-export const questionReducer = createReducerFunction(
-    QuestionModule,
+export const questionsReducer = createReducerFunction(
+    QuestionsModule,
     initialState
 );
-export const questionAction = createActionCreators(QuestionModule);
+export const questionsAction = createActionCreators(QuestionsModule);
