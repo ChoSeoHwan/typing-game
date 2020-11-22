@@ -22,5 +22,5 @@ export class TestModule extends ImmerReducer<TestModuleState> {
     }
 }
 
-export const TestReducer = createReducerFunction(TestModule, initialState);
-export const TestAction = createActionCreators(TestModule);
+export const testReducer = createReducerFunction(TestModule, initialState);
+export const testAction = createActionCreators(TestModule);
