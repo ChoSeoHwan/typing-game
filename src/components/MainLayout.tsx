@@ -69,7 +69,9 @@ const MainLayout: FC<MainLayoutProps> = ({
             <WrapperStyle>
                 <TitleStyle>{title}</TitleStyle>
                 <ContentWrapperStyle>{children}</ContentWrapperStyle>
-                <CopyrightText>&copy; {copyright}</CopyrightText>
+                <CopyrightText data-testid="main_layout-copyright">
+                    &copy; {copyright}
+                </CopyrightText>
             </WrapperStyle>
         </MainLayoutStyle>
     );

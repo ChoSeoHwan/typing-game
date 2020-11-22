@@ -17,10 +17,12 @@ const renderComponent = () =>
 
 describe('Components | <MainLayout />', () => {
     it('제목, copyright 포함', () => {
-        const { getByText } = renderComponent();
+        const { getByText, getByTestId } = renderComponent();
 
         expect(getByText(title)).toBeInTheDocument();
-        expect(getByText(copyright)).toBeInTheDocument();
+        expect(getByTestId('main_layout-copyright')).toHaveTextContent(
+            copyright
+        );
     });
 
     it('children 포함', () => {
