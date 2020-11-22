@@ -15,7 +15,7 @@ const config: Config.InitialOptions = {
         '^.+\\.(ts|tsx)?$': 'ts-jest',
         '^.+\\.[t|j]sx?$': 'babel-jest'
     },
-    collectCoverage: true,
+    collectCoverage: false,
     coverageReporters: ['json', 'html'],
     collectCoverageFrom: [
         '<rootDir>/src/components/**/*.{ts,tsx,js,jsx}',

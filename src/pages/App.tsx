@@ -3,6 +3,8 @@ import React, { FC } from 'react';
 import AppProvider from 'libs/AppProvider';
 import { NotFound, Route, Router } from 'libs/router';
 
+import NotFoundPage from 'pages/NotFound';
+
 import MainLayout from 'components/MainLayout';
 
 const App: FC = () => (
@@ -15,7 +17,10 @@ const App: FC = () => (
 
                 <Route path="/result">result</Route>
 
-                <NotFound>Not Found</NotFound>
+                {/* Not Found Page */}
+                <NotFound>
+                    <NotFoundPage />
+                </NotFound>
             </MainLayout>
         </Router>
     </AppProvider>

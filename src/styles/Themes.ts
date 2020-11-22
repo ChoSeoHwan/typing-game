@@ -7,7 +7,10 @@ export const globalTheme = {
         primaryText: '#3c4043',
         secondaryText: '#5f6368',
 
-        contentShadow: 'rgba(0, 0, 0, 0.2)'
+        contentShadow: 'rgba(0, 0, 0, 0.2)',
+
+        primary: '#4285f4',
+        primaryDark: '#3C75D3'
     },
     size: {
         headerHeight: '64px',
