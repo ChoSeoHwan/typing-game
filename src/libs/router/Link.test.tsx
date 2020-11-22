@@ -5,9 +5,6 @@ import { createMemoryHistory, History } from 'history';
 import { Link, Router } from 'libs/router';
 import render from 'libs/testUtils';
 
-import { store } from 'modules';
-import { storeAction } from 'modules/StoreModule';
-
 const pages = [
     { url: '/main', text: 'Go Main' },
     { url: '/sub', text: 'Go Sub' },
@@ -40,10 +37,6 @@ const renderComponent = (): ReturnType<typeof render> & {
 };
 
 describe('Libs | Router | <Link />', () => {
-    beforeEach(() => {
-        store.dispatch(storeAction.resetStore());
-    });
-
     it('Link 클릭 시 페이지 이동', () => {
         const { getByText, history } = renderComponent();
 

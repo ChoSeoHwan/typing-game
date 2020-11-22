@@ -4,9 +4,6 @@ import { createMemoryHistory, History } from 'history';
 import { Router, useLocation } from 'libs/router';
 import render from 'libs/testUtils';
 
-import { store } from 'modules';
-import { storeAction } from 'modules/StoreModule';
-
 const ShowPathComponent = () => {
     const location = useLocation();
 
@@ -30,10 +27,6 @@ const renderComponent = (): ReturnType<typeof render> & {
 };
 
 describe('Libs | Router | <Router />', () => {
-    beforeEach(() => {
-        store.dispatch(storeAction.resetStore());
-    });
-
     it('Router 사용 시 history 등록', () => {
         const { getByText, history } = renderComponent();
 

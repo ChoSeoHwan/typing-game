@@ -4,9 +4,6 @@ import { createMemoryHistory, History } from 'history';
 import { Redirect, Router, useLocation } from 'libs/router';
 import render from 'libs/testUtils';
 
-import { store } from 'modules';
-import { storeAction } from 'modules/StoreModule';
-
 const ShowPath = () => {
     const location = useLocation();
 
@@ -33,10 +30,6 @@ const renderComponent = (): ReturnType<typeof render> & {
 };
 
 describe('Libs | Router | <Redirect />', () => {
-    beforeEach(() => {
-        store.dispatch(storeAction.resetStore());
-    });
-
     it('expect 가 없을 경우 페이지 이동 확인', async () => {
         const { history, findByText } = renderComponent();
 

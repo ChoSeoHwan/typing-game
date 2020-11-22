@@ -4,9 +4,6 @@ import { createMemoryHistory, History } from 'history';
 import { Route, Router } from 'libs/router';
 import render from 'libs/testUtils';
 
-import { store } from 'modules';
-import { storeAction } from 'modules/StoreModule';
-
 const pages = [
     {
         url: '/main',
@@ -50,10 +47,6 @@ const renderComponent = (): ReturnType<typeof render> & {
 };
 
 describe('Libs | Router | <Route />', () => {
-    beforeEach(() => {
-        store.dispatch(storeAction.resetStore());
-    });
-
     it('Route 밖에 있는 텍스트 항시 노출', () => {
         const { history, getByText } = renderComponent();
 

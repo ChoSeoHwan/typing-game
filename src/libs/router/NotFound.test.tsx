@@ -4,9 +4,6 @@ import { createMemoryHistory, History } from 'history';
 import { NotFound, Route, Router } from 'libs/router';
 import render from 'libs/testUtils';
 
-import { store } from 'modules';
-import { storeAction } from 'modules/StoreModule';
-
 const renderComponent = (): ReturnType<typeof render> & {
     history: History;
 } => {
@@ -37,10 +34,6 @@ const renderComponent = (): ReturnType<typeof render> & {
 };
 
 describe('Libs | Router | <NotFound />', () => {
-    beforeEach(() => {
-        store.dispatch(storeAction.resetStore());
-    });
-
     it('Route 에 매칭되지 않은 url 일 경우 Not Found 페이지 노출', () => {
         const { history, getByText } = renderComponent();
 
