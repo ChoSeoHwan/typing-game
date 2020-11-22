@@ -47,6 +47,13 @@ class QuestionModule extends ImmerReducer<QuestionModuleState> {
         this.draftState.status = Status.ERROR;
         this.draftState.error = error;
     }
+
+    /**
+     * question 초기화
+     */
+    resetQuestions() {
+        this.draftState = initialState;
+    }
 }
 
 export const questionReducer = createReducerFunction(

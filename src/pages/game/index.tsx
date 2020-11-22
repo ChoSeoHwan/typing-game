@@ -6,6 +6,7 @@ import { questionAction } from 'modules/QuestionModule';
 
 import Status from 'constants/Status';
 
+import Error from 'components/game/Error';
 import Loading from 'components/game/Loading';
 
 const Game: FC = () => {
@@ -18,13 +19,25 @@ const Game: FC = () => {
 
     // 문제 리스트 로딩
     useEffect(() => {
-        dispatch(questionAction.fetchQuestions());
-    }, [dispatch]);
+        if (questionStatus === Status.CLEAR) {
+            dispatch(questionAction.fetchQuestions());
+        }
+    }, [questionStatus, dispatch]);
 
-    // 문제 리스트 로딩 중
-    if (questionStatus === Status.LOADING) return <Loading />;
+    return (
+        <>
+            {/* 문제 리스트 로딩 중 */}
+            {[Status.CLEAR, Status.LOADING].includes(questionStatus) && (
+                <Loading />
+            )}
 
-    return <div />;
+            {/* 문제 리스트 조회 실패 */}
+            {questionStatus === Status.ERROR && <Error />}
+
+            {/* 문제 리스트 로딩 성공 */}
+            {questionStatus === Status.SUCCESS && <div />}
+        </>
+    );
 };
 
 export default Game;

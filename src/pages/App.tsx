@@ -20,7 +20,9 @@ const App: FC = () => (
                     <Game />
                 </Route>
 
-                <Route path="/result">result</Route>
+                <Route path="/result" expect>
+                    result
+                </Route>
 
                 {/* Not Found Page */}
                 <NotFound>

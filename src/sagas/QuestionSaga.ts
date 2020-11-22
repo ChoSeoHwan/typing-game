@@ -1,4 +1,4 @@
-import { call, put, take } from '@redux-saga/core/effects';
+import { call, fork, put, take } from '@redux-saga/core/effects';
 import AxiosResponseError from 'errors/AxiosResponseError';
 import { isQuestion } from 'types/data/Question';
 
@@ -28,7 +28,12 @@ function* fetchQuestion() {
 }
 
 export function* QuestionSaga(): IterableIterator<unknown> {
-    yield take(questionAction.fetchQuestions.type);
+    while (true) {
+        yield take(questionAction.fetchQuestions.type);
 
-    yield call(fetchQuestion);
+        yield fork(fetchQuestion);
+
+        yield take(questionAction.fetchQuestionsError.type);
+        yield take(questionAction.resetQuestions.type);
+    }
 }
