@@ -1,9 +1,6 @@
-import React, { FC } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { FC, HTMLAttributes } from 'react';
 
 import styled from 'libs/styled';
-
-import { gameAction } from 'modules/GameModule';
 
 import Button from 'components/Button';
 import SubTitle from 'components/SubTitle';
@@ -23,22 +20,15 @@ const GameStartButton = styled(Button)`
     margin-top: 20px;
 `;
 
-const Ready: FC = () => {
-    const dispatch = useDispatch();
+interface ReadyProps {
+    onStartGame: HTMLAttributes<HTMLButtonElement>['onClick'];
+}
 
-    // 게임 시작
-    const handleStartGame = () => {
-        dispatch(gameAction.startGame());
-    };
-
-    return (
-        <ReadyStyle data-testid="game-ready">
-            <SubTitle>게임을 시작하려면 아래 버튼을 눌러주세요.</SubTitle>
-            <GameStartButton onClick={handleStartGame}>
-                게임 시작
-            </GameStartButton>
-        </ReadyStyle>
-    );
-};
+const Ready: FC<ReadyProps> = ({ onStartGame }: ReadyProps) => (
+    <ReadyStyle data-testid="game-ready">
+        <SubTitle>게임을 시작하려면 아래 버튼을 눌러주세요.</SubTitle>
+        <GameStartButton onClick={onStartGame}>게임 시작</GameStartButton>
+    </ReadyStyle>
+);
 
 export default Ready;

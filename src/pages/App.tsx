@@ -5,10 +5,14 @@ import { Router } from 'libs/router';
 
 import Index from 'pages';
 
+import MainLayout from 'components/MainLayout';
+
 const App: FC = () => (
     <AppProvider>
         <Router>
-            <Index />
+            <MainLayout title="Typing Game" copyright="조서환(SeoHwan Cho)">
+                <Index />
+            </MainLayout>
         </Router>
     </AppProvider>
 );

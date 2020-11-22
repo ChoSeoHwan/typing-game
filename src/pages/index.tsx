@@ -38,7 +38,7 @@ const Index: FC = () => {
     if (status === Status.ERROR) return <Error />;
 
     return (
-        <MainLayout title="Typing Game" copyright="조서환(SeoHwan Cho)">
+        <>
             {/* redirect '/' path to main page */}
             <Redirect path="/" to="/game" expect />
 
@@ -55,7 +55,7 @@ const Index: FC = () => {
             <NotFound>
                 <NotFoundPage />
             </NotFound>
-        </MainLayout>
+        </>
     );
 };
 

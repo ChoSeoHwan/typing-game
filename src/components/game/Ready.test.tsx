@@ -9,9 +9,21 @@ import Status from 'constants/Status';
 
 import Ready from 'components/game/Ready';
 
+const renderComponent = (): ReturnType<typeof render> & {
+    handleStartGame: ReturnType<typeof jest.fn>;
+} => {
+    const handleStartGame = jest.fn();
+    const { ...tester } = render(<Ready onStartGame={handleStartGame} />);
+
+    return {
+        handleStartGame,
+        ...tester
+    };
+};
+
 describe('Components | Game | <Ready />', () => {
     it('게임 준비 텍스트 노출', () => {
-        const { getByText } = render(<Ready />);
+        const { getByText } = renderComponent();
 
         expect(
             getByText('게임을 시작하려면 아래 버튼을 눌러주세요.')
@@ -20,10 +32,10 @@ describe('Components | Game | <Ready />', () => {
     });
 
     it('게임 시작 버튼 클릭', () => {
-        const { getByText } = render(<Ready />);
+        const { getByText, handleStartGame } = renderComponent();
 
         fireEvent.click(getByText('게임 시작'));
 
-        expect(store.getState().gameReducer.status).toBe(Status.LOADING);
+        expect(handleStartGame).toBeCalled();
     });
 });

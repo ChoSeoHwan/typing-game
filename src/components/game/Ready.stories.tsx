@@ -1,4 +1,5 @@
 import React from 'react';
+import { action } from '@storybook/addon-actions';
 import { Story } from '@storybook/react';
 
 import Ready from 'components/game/Ready';
@@ -9,6 +10,8 @@ export default {
     component: Ready
 };
 
-export const DefaultReady: Story = () => <Ready />;
+export const DefaultReady: Story = () => (
+    <Ready onStartGame={action('start game')} />
+);
 
 DefaultReady.storyName = 'Default';

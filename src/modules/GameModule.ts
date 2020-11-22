@@ -20,8 +20,9 @@ class GameModule extends ImmerReducer<GameModuleState> {
     /**
      * 게임 시작
      */
-    startGame() {
+    startGame(initScore: number) {
         this.draftState.status = Status.LOADING;
+        this.draftState.score = initScore;
     }
 
     /**

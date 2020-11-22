@@ -1,5 +1,5 @@
-import React, { FC, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { FC, useCallback, useEffect } from 'react';
+import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 
 import { useHistory } from 'libs/router';
 
@@ -8,16 +8,30 @@ import { gameAction } from 'modules/GameModule';
 
 import Status from 'constants/Status';
 
+import Play from 'components/game/Play';
 import Ready from 'components/game/Ready';
 
 const Game: FC = () => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const gameStatus = useSelector<
+    // 현재 게임 데이터 조회
+    const { status, score } = useSelector<
         RootReducerState,
-        RootReducerState['gameReducer']['status']
-    >(({ gameReducer }) => gameReducer.status);
+        Pick<RootReducerState['gameReducer'], 'status' | 'score'>
+    >(
+        ({ gameReducer }) => ({
+            status: gameReducer.status,
+            score: gameReducer.score
+        }),
+        shallowEqual
+    );
+
+    // 질문 리스트 조회
+    const questions = useSelector<
+        RootReducerState,
+        RootReducerState['questionsReducer']['data']
+    >(({ questionsReducer }) => questionsReducer.data);
 
     // 게임 페이지 최초 진입 시 게인 기록 초기화
     useEffect(() => {
@@ -26,18 +40,38 @@ const Game: FC = () => {
 
     // 게임 완료 시 결과 창으로 이동
     useEffect(() => {
-        if (gameStatus === Status.SUCCESS) {
+        if (status === Status.SUCCESS) {
             history.push('/result');
         }
-    }, [gameStatus, history]);
+    }, [status, history]);
+
+    // 게임 시작 이벤트
+    const handleStartGame = useCallback(() => {
+        dispatch(gameAction.startGame(questions.length));
+    }, [dispatch, questions]);
+
+    // 점수 변경
+    const handleSetScore = useCallback(
+        (score) => () => {
+            dispatch(gameAction.setScore(score));
+        },
+        [dispatch]
+    );
 
     return (
         <>
             {/* 게임 준비 페이지 */}
-            {gameStatus === Status.CLEAR && <Ready />}
+            {status === Status.CLEAR && <Ready onStartGame={handleStartGame} />}
 
             {/* 게임 플레이 페이지 */}
-            {gameStatus === Status.LOADING && <div>게임중</div>}
+            {status === Status.LOADING && (
+                <Play
+                    questions={questions}
+                    score={score}
+                    onLose={handleSetScore(score - 1)}
+                    onWin={handleSetScore(score + 1)}
+                />
+            )}
         </>
     );
 };
