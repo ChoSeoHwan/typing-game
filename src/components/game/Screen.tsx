@@ -30,7 +30,9 @@ const Screen: FC = () => {
             {gameStatus === Status.CLEAR && <Ready />}
 
             {/* 게임 플레이 페이지 */}
-            {gameStatus === Status.LOADING && '게임 중'}
+            {gameStatus === Status.LOADING && (
+                <div data-testid="game-screen-play">게임 중</div>
+            )}
         </>
     );
 };

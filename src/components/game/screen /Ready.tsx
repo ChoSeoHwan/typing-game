@@ -32,7 +32,7 @@ const Ready: FC = () => {
     };
 
     return (
-        <ReadyStyle>
+        <ReadyStyle data-testid="game-screen-ready">
             <SubTitle>게임을 시작하려면 아래 버튼을 눌러주세요.</SubTitle>
             <GameStartButton onClick={handleStartGame}>
                 게임 시작
