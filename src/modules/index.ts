@@ -8,12 +8,10 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import { routerReducer } from 'modules/RouterModule';
 import { storeAction, storeReducer } from 'modules/StoreModule';
-import { testReducer } from 'modules/TestModule';
 
 // combined reducer
 const rootReducer = combineReducers({
     storeReducer,
-    testReducer,
     routerReducer
 });
 
