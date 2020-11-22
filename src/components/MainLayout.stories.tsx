@@ -10,14 +10,21 @@ export default {
 
 interface DefaultMainLayoutProps {
     title: string;
+    copyright: string;
 }
 
 export const DefaultMainLayout: Story<DefaultMainLayoutProps> = ({
-    title
-}: DefaultMainLayoutProps) => <MainLayout title={title}>children</MainLayout>;
+    title,
+    copyright
+}: DefaultMainLayoutProps) => (
+    <MainLayout title={title} copyright={copyright}>
+        children
+    </MainLayout>
+);
 
 DefaultMainLayout.storyName = 'Default';
 
 DefaultMainLayout.args = {
-    title: 'Title Name'
+    title: 'Title Name',
+    copyright: 'SeoHwan Cho'
 };

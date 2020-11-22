@@ -11,7 +11,7 @@ import MainLayout from 'components/MainLayout';
 const App: FC = () => (
     <AppProvider>
         <Router>
-            <MainLayout title="Typing Game">
+            <MainLayout title="Typing Game" copyright="조서환(SeoHwan Cho)">
                 {/* redirect '/' path to main page */}
                 <Redirect path="/" to="/game" expect />
 

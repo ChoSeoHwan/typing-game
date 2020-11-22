@@ -37,7 +37,7 @@ const ContentWrapperStyle = styled.div`
     flex-direction: column;
     align-items: stretch;
 
-    height: 300px;
+    height: 400px;
     padding: 8px;
     box-sizing: border-box;
 
@@ -46,19 +46,30 @@ const ContentWrapperStyle = styled.div`
     box-shadow: 0 0 10px -5px ${({ theme }) => theme.colors.contentShadow};
 `;
 
+const CopyrightText = styled.p`
+    font-size: 1.7rem;
+    color: ${({ theme }) => theme.colors.secondaryText};
+    text-align: right;
+
+    margin-top: 15px;
+`;
+
 interface MainLayoutProps {
     title: string;
+    copyright: string;
 }
 
 const MainLayout: FC<MainLayoutProps> = ({
     children,
-    title
+    title,
+    copyright
 }: PropsWithChildren<MainLayoutProps>) => {
     return (
         <MainLayoutStyle>
             <WrapperStyle>
                 <TitleStyle>{title}</TitleStyle>
                 <ContentWrapperStyle>{children}</ContentWrapperStyle>
+                <CopyrightText>&copy; {copyright}</CopyrightText>
             </WrapperStyle>
         </MainLayoutStyle>
     );
