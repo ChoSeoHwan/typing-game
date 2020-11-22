@@ -1,42 +1,43 @@
 import React, { FC, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
+import { useHistory } from 'libs/router';
+
 import { RootReducerState } from 'modules';
-import { questionsAction } from 'modules/QuestionsModule';
+import { gameAction } from 'modules/GameModule';
 
 import Status from 'constants/Status';
 
-import Error from 'components/game/Error';
-import Loading from 'components/game/Loading';
-import Screen from 'components/game/Screen';
+import Ready from 'components/game/Ready';
 
 const Game: FC = () => {
     const dispatch = useDispatch();
+    const history = useHistory();
 
-    const questionStatus = useSelector<
+    const gameStatus = useSelector<
         RootReducerState,
-        RootReducerState['questionsReducer']['status']
-    >(({ questionsReducer }) => questionsReducer.status);
+        RootReducerState['gameReducer']['status']
+    >(({ gameReducer }) => gameReducer.status);
 
-    // 문제 리스트 로딩
+    // 게임 페이지 최초 진입 시 게인 기록 초기화
     useEffect(() => {
-        if (questionStatus === Status.CLEAR) {
-            dispatch(questionsAction.fetchQuestions());
+        dispatch(gameAction.resetGame());
+    }, [dispatch]);
+
+    // 게임 완료 시 결과 창으로 이동
+    useEffect(() => {
+        if (gameStatus === Status.SUCCESS) {
+            history.push('/result');
         }
-    }, [questionStatus, dispatch]);
+    }, [gameStatus, history]);
 
     return (
         <>
-            {/* 문제 리스트 로딩 중 */}
-            {[Status.CLEAR, Status.LOADING].includes(questionStatus) && (
-                <Loading />
-            )}
+            {/* 게임 준비 페이지 */}
+            {gameStatus === Status.CLEAR && <Ready />}
 
-            {/* 문제 리스트 조회 실패 */}
-            {questionStatus === Status.ERROR && <Error />}
-
-            {/* 문제 리스트 로딩 성공 */}
-            {questionStatus === Status.SUCCESS && <Screen />}
+            {/* 게임 플레이 페이지 */}
+            {gameStatus === Status.LOADING && <div>게임중</div>}
         </>
     );
 };

@@ -8,9 +8,9 @@ import { questionsAction } from 'modules/QuestionsModule';
 
 import Status from 'constants/Status';
 
-import Error from 'components/game/Error';
+import Error from 'components/Error';
 
-describe('Components | Game | <Error />', () => {
+describe('Components | <Error />', () => {
     it('오류 텍스트 및 재시도 버튼 노출', () => {
         const { getByText } = render(<Error />);
 

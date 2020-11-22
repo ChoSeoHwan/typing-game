@@ -7,7 +7,7 @@ import { store } from 'modules';
 
 import Status from 'constants/Status';
 
-import Ready from 'components/game/screen /Ready';
+import Ready from 'components/game/Ready';
 
 describe('Components | Game | <Ready />', () => {
     it('게임 준비 텍스트 노출', () => {

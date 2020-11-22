@@ -22,16 +22,13 @@ class GameModule extends ImmerReducer<GameModuleState> {
      */
     startGame() {
         this.draftState.status = Status.LOADING;
-        this.draftState.score = 0;
     }
 
     /**
-     * 점수 획득
+     * 점수 변경
      */
-    plusScore() {
-        if (this.draftState.status === Status.LOADING) {
-            this.draftState.score++;
-        }
+    setScore(score: number) {
+        this.draftState.score = score;
     }
 
     /**
