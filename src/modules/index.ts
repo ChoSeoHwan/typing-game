@@ -4,6 +4,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
 import { rootSaga } from 'sagas';
 
+import { gameReducer } from 'modules/GameModule';
 import { questionReducer } from 'modules/QuestionModule';
 import { routerReducer } from 'modules/RouterModule';
 import { storeAction, storeReducer } from 'modules/StoreModule';
@@ -12,7 +13,8 @@ import { storeAction, storeReducer } from 'modules/StoreModule';
 export const combinedReducer = combineReducers({
     storeReducer,
     routerReducer,
-    questionReducer
+    questionReducer,
+    gameReducer
 });
 
 export type RootReducerState = ReturnType<typeof combinedReducer>;
