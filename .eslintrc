@@ -6,7 +6,8 @@
         "react",
         "prettier",
         "simple-import-sort",
-        "react-hooks"
+        "react-hooks",
+        "@emotion"
     ],
     "extends": [
         "eslint:recommended",
@@ -27,6 +28,10 @@
         }
     },
     "rules": {
+        "@emotion/jsx-import": "error",
+        "@emotion/no-vanilla": "error",
+        "@emotion/import-from-emotion": "error",
+        "@emotion/styled-import": "error",
         "react/prop-types": [
             2,
             {
@@ -47,6 +52,7 @@
             {
                 "groups": [
                     ["^react", "^\\u0000", "^@?\\w"],
+                    ["^styles"],
                     ["^libs"],
                     ["^modules"],
                     ["^constants"],
