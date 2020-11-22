@@ -1,4 +1,4 @@
-import { css } from '@emotion/react';
+import { css } from '@emotion/core';
 
 import { GlobalTheme } from 'styles/Themes';
 
@@ -145,6 +145,7 @@ export const GlobalStyle = (theme: GlobalTheme): ReturnType<typeof css> => css`
     a {
         color: inherit;
         text-decoration: none;
+        cursor: pointer;
 
         &:hover {
             text-decoration: underline;
