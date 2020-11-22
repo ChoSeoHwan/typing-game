@@ -1,8 +1,9 @@
 import React, { FC } from 'react';
 
 import AppProvider from 'libs/AppProvider';
-import { NotFound, Route, Router } from 'libs/router';
+import { NotFound, Redirect, Route, Router } from 'libs/router';
 
+import Game from 'pages/Game';
 import NotFoundPage from 'pages/NotFound';
 
 import MainLayout from 'components/MainLayout';
@@ -11,8 +12,12 @@ const App: FC = () => (
     <AppProvider>
         <Router>
             <MainLayout title="Typing Game">
-                <Route path="/" expect>
-                    game
+                {/* redirect '/' path to main page */}
+                <Redirect path="/" to="/game" expect />
+
+                {/* Game Page */}
+                <Route path="/game" expect>
+                    <Game />
                 </Route>
 
                 <Route path="/result">result</Route>

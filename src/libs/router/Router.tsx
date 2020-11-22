@@ -19,6 +19,8 @@ const Router: FC<RouterProps> = ({
     const currentHistory = useHistory(history);
 
     useEffect(() => {
+        dispatch(routerAction.setLocation(currentHistory.location));
+
         // history listener 등록
         const removeListener = currentHistory.listen(({ location }) => {
             dispatch(routerAction.setLocation(location));
