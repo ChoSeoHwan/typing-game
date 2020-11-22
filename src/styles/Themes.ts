@@ -7,6 +7,8 @@ export const globalTheme = {
         primaryText: '#3c4043',
         secondaryText: '#5f6368',
 
+        lightText: '#dfdfdf',
+
         contentShadow: 'rgba(0, 0, 0, 0.2)',
 
         primary: '#4285f4',

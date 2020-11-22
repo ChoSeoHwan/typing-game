@@ -24,8 +24,10 @@ class QuestionModule extends ImmerReducer<QuestionModuleState> {
      * question 리스트 로딩 시작
      */
     fetchQuestions() {
-        this.draftState = initialState;
-        this.draftState.status = Status.LOADING;
+        this.draftState = {
+            ...initialState,
+            status: Status.LOADING
+        };
     }
 
     /**

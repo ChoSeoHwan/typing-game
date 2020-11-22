@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import AppProvider from 'libs/AppProvider';
 import { NotFound, Redirect, Route, Router } from 'libs/router';
 
-import Game from 'pages/Game';
+import Game from 'pages/game';
 import NotFoundPage from 'pages/NotFound';
 
 import MainLayout from 'components/MainLayout';

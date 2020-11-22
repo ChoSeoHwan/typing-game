@@ -9,37 +9,42 @@ import { routerReducer } from 'modules/RouterModule';
 import { storeAction, storeReducer } from 'modules/StoreModule';
 
 // combined reducer
-export const rootReducer = combineReducers({
+export const combinedReducer = combineReducers({
     storeReducer,
     routerReducer,
     questionReducer
 });
 
-export type RootReducerState = ReturnType<typeof rootReducer>;
-export type RootReducerAction = ActionFromReducer<typeof rootReducer>;
+export type RootReducerState = ReturnType<typeof combinedReducer>;
+export type RootReducerAction = ActionFromReducer<typeof combinedReducer>;
 
 // reducer function 가공
-export const wrapperReducer = (
+const rootWrapperReducer = (
     state: RootReducerState,
     action: RootReducerAction
-): ReturnType<typeof rootReducer> => {
+): ReturnType<typeof combinedReducer> => {
     // storeAction.resetStore 액션 실행 시 모든 store 의 state 를 초기화
     if (
         action.type === storeAction.resetStore.type &&
         initialStoreState !== undefined
     ) {
-        return rootReducer(initialStoreState, action);
+        return combinedReducer(initialStoreState, action);
     }
 
-    return rootReducer(state, action);
+    return combinedReducer(state, action);
 };
+
+export const rootReducer = rootWrapperReducer as Reducer<
+    RootReducerState,
+    RootReducerAction
+>;
 
 // redux-saga middleware creator
 const sagaMiddleware = createSagaMiddleware();
 
 // store 생성
 export const store = createStore(
-    wrapperReducer as Reducer<RootReducerState, RootReducerAction>,
+    rootReducer,
     composeWithDevTools(applyMiddleware(sagaMiddleware))
 );
 

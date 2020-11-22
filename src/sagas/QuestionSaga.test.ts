@@ -1,10 +1,11 @@
 import 'modules';
-import { Reducer } from 'redux';
+import AxiosResponseError from 'errors/AxiosResponseError';
 import { expectSaga } from 'redux-saga-test-plan';
 import { call } from 'redux-saga-test-plan/matchers';
+import { throwError } from 'redux-saga-test-plan/providers';
 import { fetchQuestionApi, QuestionSaga } from 'sagas/QuestionSaga';
 
-import { RootReducerAction, RootReducerState, wrapperReducer } from 'modules';
+import { rootReducer, RootReducerState } from 'modules';
 import { questionAction } from 'modules/QuestionModule';
 
 import Status from 'constants/Status';
@@ -27,9 +28,7 @@ const testData = [
 describe('Sagas | QuestionSaga', () => {
     it('question saga 테스트', async () => {
         const { storeState } = await expectSaga(QuestionSaga)
-            .withReducer(
-                wrapperReducer as Reducer<RootReducerState, RootReducerAction>
-            )
+            .withReducer(rootReducer)
             .provide([[call.fn(fetchQuestionApi), testData]])
             .put(questionAction.fetchQuestionsSuccess(testData))
             .dispatch(questionAction.fetchQuestions())
@@ -41,6 +40,25 @@ describe('Sagas | QuestionSaga', () => {
             status: Status.SUCCESS,
             data: testData,
             error: null
+        });
+    });
+
+    it('question saga error 테스트', async () => {
+        const axiosError = new AxiosResponseError();
+
+        const { storeState } = await expectSaga(QuestionSaga)
+            .withReducer(rootReducer)
+            .provide([[call.fn(fetchQuestionApi), throwError(axiosError)]])
+            .put(questionAction.fetchQuestionsError(axiosError.message))
+            .dispatch(questionAction.fetchQuestions())
+            .run({ timeout: 3000 });
+
+        const state = storeState as RootReducerState;
+
+        expect(state.questionReducer).toStrictEqual({
+            status: Status.ERROR,
+            data: [],
+            error: axiosError.message
         });
     });
 });

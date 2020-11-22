@@ -35,6 +35,7 @@ const TitleStyle = styled.h1`
 const ContentWrapperStyle = styled.div`
     display: flex;
     flex-direction: column;
+    align-items: stretch;
 
     height: 300px;
     padding: 8px;
