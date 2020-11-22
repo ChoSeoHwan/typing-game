@@ -1,6 +1,9 @@
-export const theme = {
+import '@emotion/react';
+
+export const globalTheme = {
     colors: {
-        bodyBackground: '#fff',
+        bodyBackground: '#f3f3f3',
+        contentBackground: '#fff',
         hoverBackground: 'rgba(32,33,36,0.039)',
 
         primaryText: '#3c4043',
@@ -20,4 +23,8 @@ export const theme = {
     }
 };
 
-export type Theme = typeof theme;
+export type GlobalTheme = typeof globalTheme;
+
+declare module '@emotion/react' {
+    export interface Theme extends GlobalTheme {}
+}

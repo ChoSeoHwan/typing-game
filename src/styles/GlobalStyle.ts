@@ -1,8 +1,8 @@
 import { css } from '@emotion/react';
 
-import { Theme } from 'styles/Themes';
+import { GlobalTheme } from 'styles/Themes';
 
-export const GlobalStyle = (theme: Theme): ReturnType<typeof css> => css`
+export const GlobalStyle = (theme: GlobalTheme): ReturnType<typeof css> => css`
     @font-face {
         font-family: 'Product Sans Regular';
         font-style: normal;
