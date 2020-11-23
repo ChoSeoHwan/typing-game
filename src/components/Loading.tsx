@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
-import { keyframes } from '@emotion/core';
+
+import { changeColor } from 'styles/keyframes';
 
 import styled from 'libs/styled';
 
@@ -12,19 +13,6 @@ const LoadingStyle = styled.article`
     height: 100%;
 `;
 
-const changeColorKeyframes = (
-    startColor: string,
-    endColor: string
-) => keyframes`
-    from {
-        color: ${startColor};
-    }
-    
-    to {
-        color: ${endColor};
-    }
-`;
-
 const LoadingText = styled.div`
     text-align: center;
 
@@ -34,10 +22,7 @@ const LoadingText = styled.div`
     color: ${({ theme }) => theme.colors.primaryText};
 
     animation: ${({ theme }) =>
-            changeColorKeyframes(
-                theme.colors.primaryText,
-                theme.colors.lightText
-            )}
+            changeColor(theme.colors.primaryText, theme.colors.lightText)}
         1s ease infinite alternate;
 `;
 

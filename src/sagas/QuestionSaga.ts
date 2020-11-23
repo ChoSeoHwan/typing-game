@@ -1,6 +1,7 @@
 import { call, fork, put, take } from '@redux-saga/core/effects';
-import AxiosResponseError from 'errors/AxiosResponseError';
 import { isQuestion } from 'types/data/Question';
+
+import AxiosResponseError from 'errors/AxiosResponseError';
 
 import axios from 'libs/axios';
 

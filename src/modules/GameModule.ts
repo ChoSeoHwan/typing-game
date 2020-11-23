@@ -8,11 +8,13 @@ import Status from 'constants/Status';
 
 interface GameModuleState {
     status: Status;
+    seconds: number[];
     score: number;
 }
 
 const initialState: GameModuleState = {
     status: Status.CLEAR,
+    seconds: [],
     score: 0
 };
 
@@ -20,18 +22,25 @@ class GameModule extends ImmerReducer<GameModuleState> {
     /**
      * 게임 시작
      */
-    startGame() {
+    startGame(initScore: number) {
         this.draftState.status = Status.LOADING;
-        this.draftState.score = 0;
+        this.draftState.score = initScore;
+        this.draftState.seconds = [];
     }
 
     /**
-     * 점수 획득
+     * 점수 변경
      */
-    plusScore() {
-        if (this.draftState.status === Status.LOADING) {
-            this.draftState.score++;
-        }
+    setScore(score: number) {
+        this.draftState.score = score;
+    }
+
+    /**
+     * 답변 시간 추가
+     * @param second
+     */
+    addSeconds(second: number) {
+        this.draftState.seconds.push(second);
     }
 
     /**

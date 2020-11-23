@@ -52,9 +52,11 @@
             {
                 "groups": [
                     ["^react", "^\\u0000", "^@?\\w"],
+                    ["^errors"],
                     ["^styles"],
                     ["^libs"],
                     ["^modules"],
+                    ["^sagas"],
                     ["^constants"],
                     ["^pages"],
                     ["^components"]

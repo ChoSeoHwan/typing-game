@@ -1,11 +1,11 @@
 import React from 'react';
 import { Story } from '@storybook/react';
 
-import Loading from 'components/game/Loading';
+import Loading from 'components/Loading';
 
 export default {
-    title: 'Components/Game/Loading',
-    description: 'Game 페이지 Loading 컴포넌트',
+    title: 'Components/Loading',
+    description: 'Loading 컴포넌트',
     component: Loading
 };
 
