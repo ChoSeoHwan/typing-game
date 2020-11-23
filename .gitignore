@@ -9,6 +9,7 @@
 .pnp.js
 
 # testing
+/report
 /coverage
 
 # production

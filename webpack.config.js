@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+/* eslint-enable @typescript-eslint/no-var-requires */
 
 module.exports = {
-    entry: path.join(__dirname, 'src', 'index.js'),
+    entry: path.join(__dirname, 'src', 'index.tsx'),
     output: {
         filename: 'bundle.js',
         path: path.resolve(__dirname, './build')
@@ -11,7 +14,7 @@ module.exports = {
         rules: [
             // babel loader 규칙
             {
-                test: /\.js$/,
+                test: /\.(js|jsx|ts|tsx)$/,
                 exclude: /node_modules/,
                 use: {
                     loader: 'babel-loader'
@@ -21,18 +24,23 @@ module.exports = {
             {
                 test: /\.css$/,
                 exclude: /node_modules/,
-                use: ["style-loader", "css-loader"]
+                use: ['style-loader', 'css-loader']
             }
         ]
     },
+    resolve: {
+        plugins: [new TsconfigPathsPlugin()],
+        extensions: ['*', '.js', '.jsx', '.ts', '.tsx']
+    },
     plugins: [
         new HTMLWebpackPlugin({
-            template: "./public/index.html"
+            template: './public/index.html'
         })
     ],
     devServer: {
         hot: true,
         open: true,
-        port: 80
+        port: 80,
+        historyApiFallback: true
     }
-}
+};
