@@ -8,7 +8,7 @@ module.exports = {
     entry: path.join(__dirname, 'src', 'index.tsx'),
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, './build')
+        path: path.resolve(__dirname, './public')
     },
     module: {
         rules: [
@@ -34,7 +34,7 @@ module.exports = {
     },
     plugins: [
         new HTMLWebpackPlugin({
-            template: './public/index.html'
+            template: './static/index.html'
         })
     ],
     devServer: {
