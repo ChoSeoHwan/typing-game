@@ -6,7 +6,7 @@ import { playAction } from 'modules/PlayModule';
 function* countSecond(second: number): IterableIterator<unknown> {
     // 카운트 시작
     for (let current = second; current > 0; current--) {
-        yield put(playAction.setSecond(current));
+        yield put(playAction.setRemainSecond(current));
         yield delay(1000);
     }
 

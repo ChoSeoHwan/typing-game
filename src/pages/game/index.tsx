@@ -50,10 +50,18 @@ const Game: FC = () => {
         dispatch(gameAction.startGame(questions.length));
     }, [dispatch, questions]);
 
-    // 오답 입력
+    // 정답 입력 실패 (시간 초과)
     const handleLose = useCallback(() => {
         dispatch(gameAction.setScore(score - 1));
     }, [dispatch, score]);
+
+    // 정답 입력 성공
+    const handleWin = useCallback(
+        (second: number) => {
+            dispatch(gameAction.addSeconds(second));
+        },
+        [dispatch]
+    );
 
     // 게임 종료
     const handleEndGame = useCallback(() => {
@@ -76,6 +84,7 @@ const Game: FC = () => {
                     questions={questions}
                     score={score}
                     onLose={handleLose}
+                    onWin={handleWin}
                     onEnd={handleEndGame}
                     onReset={handleResetGame}
                 />

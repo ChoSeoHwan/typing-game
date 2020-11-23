@@ -40,6 +40,7 @@ interface PlayProps {
     questions: Question[];
     score: number;
     onLose: () => void;
+    onWin: (second: number) => void;
     onEnd: () => void;
     onReset: () => void;
 }
@@ -48,6 +49,7 @@ const Play: FC<PlayProps> = ({
     questions,
     score,
     onLose,
+    onWin,
     onEnd,
     onReset
 }: PlayProps) => {
@@ -56,13 +58,13 @@ const Play: FC<PlayProps> = ({
     const [index, setIndex] = useState(0);
 
     // 현재 문제 데이터 조회
-    const { status, second, text } = useSelector<
+    const { status, remainSecond, question } = useSelector<
         RootReducerState,
         RootReducerState['playReducer']
     >(({ playReducer }) => ({
         status: playReducer.status,
-        second: playReducer.second,
-        text: playReducer.text
+        remainSecond: playReducer.remainSecond,
+        question: playReducer.question
     }));
 
     // 게임 시작 시 기존 데이터 초기화
@@ -87,21 +89,23 @@ const Play: FC<PlayProps> = ({
     useEffect(() => {
         if ([Status.SUCCESS, Status.ERROR].includes(status)) {
             // 실패 시 onLose 실행
-            if (status === Status.ERROR) {
-                onLose();
-            }
+            if (status === Status.ERROR) onLose();
+
+            // 성공 시 onWin 실행
+            if (status === Status.SUCCESS)
+                onWin((question?.second || remainSecond) - remainSecond);
 
             // 다음 문제
             setIndex((index) => index + 1);
             dispatch(playAction.resetPlay());
         }
-    }, [status, onLose, dispatch]);
+    }, [status, question, remainSecond, onLose, onWin, dispatch]);
 
     return (
         <PlayStyle>
-            <Header second={second} score={score} />
+            <Header second={remainSecond} score={score} />
             <Body>
-                <Answer text={text} />
+                <Answer text={question?.text || ''} />
                 <GameRestartButton onClick={onReset}>초기화</GameRestartButton>
             </Body>
         </PlayStyle>

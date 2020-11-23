@@ -10,10 +10,10 @@ import Status from 'constants/Status';
 
 import Game from 'pages/game';
 import NotFoundPage from 'pages/NotFound';
+import Result from 'pages/result';
 
 import Error from 'components/Error';
 import Loading from 'components/Loading';
-import MainLayout from 'components/MainLayout';
 
 const Index: FC = () => {
     const dispatch = useDispatch();
@@ -48,7 +48,7 @@ const Index: FC = () => {
             </Route>
 
             <Route path="/result" expect>
-                result
+                <Result />
             </Route>
 
             {/* Not Found Page */}

@@ -27,10 +27,12 @@ const questions: Question[] = [
 
 const renderComponent = (): ReturnType<typeof render> & {
     handleLose: ReturnType<typeof jest.fn>;
+    handleWin: ReturnType<typeof jest.fn>;
     handleEnd: ReturnType<typeof jest.fn>;
     handleReset: ReturnType<typeof jest.fn>;
 } => {
     const handleLose = jest.fn();
+    const handleWin = jest.fn();
     const handleEnd = jest.fn();
     const handleReset = jest.fn();
 
@@ -39,6 +41,7 @@ const renderComponent = (): ReturnType<typeof render> & {
             questions={questions}
             score={questions.length}
             onLose={handleLose}
+            onWin={handleWin}
             onEnd={handleEnd}
             onReset={handleReset}
         />
@@ -58,7 +61,8 @@ describe('Components | Games | <Play />', () => {
             getByPlaceholderText,
             getByText,
             getByTestId,
-            handleEnd
+            handleEnd,
+            handleWin
         } = renderComponent();
 
         const inputComponent = getByPlaceholderText('텍스트를 입력해주세요.');
@@ -79,6 +83,7 @@ describe('Components | Games | <Play />', () => {
             });
         });
 
+        expect(handleWin).toBeCalledTimes(questions.length);
         expect(handleEnd).toBeCalled();
     });
 

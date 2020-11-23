@@ -53,6 +53,7 @@ export const DefaultPlay: Story = () => {
             questions={questions}
             score={questions.length}
             onLose={action('lose game')}
+            onWin={action('win game')}
             onEnd={action('end game')}
             onReset={action('reset game')}
         />

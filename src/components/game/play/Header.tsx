@@ -49,7 +49,7 @@ const Header: FC<HeaderProps> = ({ score, second }: HeaderProps) => {
     return (
         <HeaderStyle>
             <InfoText>
-                남은 시간 :{' '}
+                남은 시간 :
                 <span data-testid="components-game-play-header-second">
                     {second}
                 </span>

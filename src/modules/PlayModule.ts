@@ -9,14 +9,14 @@ import Status from 'constants/Status';
 
 interface PlayModuleState {
     status: Status;
-    second: number;
-    text: string;
+    remainSecond: number;
+    question: Question | null;
 }
 
 const initialState: PlayModuleState = {
     status: Status.CLEAR,
-    second: 0,
-    text: ''
+    remainSecond: 0,
+    question: null
 };
 
 class PlayModule extends ImmerReducer<PlayModuleState> {
@@ -26,16 +26,16 @@ class PlayModule extends ImmerReducer<PlayModuleState> {
      */
     startPlay(question: Question) {
         this.draftState.status = Status.LOADING;
-        this.draftState.second = question.second;
-        this.draftState.text = question.text;
+        this.draftState.remainSecond = question.second;
+        this.draftState.question = question;
     }
 
     /**
      * 남은 시간 변경
-     * @param second
+     * @param remainSecond
      */
-    setSecond(second: number) {
-        this.draftState.second = second;
+    setRemainSecond(remainSecond: number) {
+        this.draftState.remainSecond = remainSecond;
     }
 
     /**
