@@ -13,6 +13,7 @@
 /coverage
 
 # production
+/storybook-static
 /public
 /.next
 /out
