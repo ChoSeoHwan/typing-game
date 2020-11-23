@@ -27,7 +27,7 @@ interface ReadyProps {
 const Ready: FC<ReadyProps> = ({ onStartGame }: ReadyProps) => (
     <ReadyStyle data-testid="game-ready">
         <SubTitle>게임을 시작하려면 아래 버튼을 눌러주세요.</SubTitle>
-        <GameStartButton onClick={onStartGame}>게임 시작</GameStartButton>
+        <GameStartButton onClick={onStartGame}>시작</GameStartButton>
     </ReadyStyle>
 );
 

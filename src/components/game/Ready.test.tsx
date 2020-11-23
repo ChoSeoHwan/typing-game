@@ -3,10 +3,6 @@ import { fireEvent } from '@testing-library/dom';
 
 import render from 'libs/testUtils';
 
-import { store } from 'modules';
-
-import Status from 'constants/Status';
-
 import Ready from 'components/game/Ready';
 
 const renderComponent = (): ReturnType<typeof render> & {
@@ -28,13 +24,13 @@ describe('Components | Game | <Ready />', () => {
         expect(
             getByText('게임을 시작하려면 아래 버튼을 눌러주세요.')
         ).toBeInTheDocument();
-        expect(getByText('게임 시작')).toBeInTheDocument();
+        expect(getByText('시작')).toBeInTheDocument();
     });
 
     it('게임 시작 버튼 클릭', () => {
         const { getByText, handleStartGame } = renderComponent();
 
-        fireEvent.click(getByText('게임 시작'));
+        fireEvent.click(getByText('시작'));
 
         expect(handleStartGame).toBeCalled();
     });

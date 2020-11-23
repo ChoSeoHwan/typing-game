@@ -1,12 +1,14 @@
 import 'modules';
-import AxiosResponseError from 'errors/AxiosResponseError';
 import { expectSaga } from 'redux-saga-test-plan';
 import { call } from 'redux-saga-test-plan/matchers';
 import { throwError } from 'redux-saga-test-plan/providers';
-import { fetchQuestionApi, QuestionSaga } from 'sagas/QuestionSaga';
+
+import AxiosResponseError from 'errors/AxiosResponseError';
 
 import { rootReducer, RootReducerState } from 'modules';
 import { questionsAction } from 'modules/QuestionsModule';
+
+import { fetchQuestionApi, QuestionSaga } from 'sagas/QuestionSaga';
 
 import Status from 'constants/Status';
 

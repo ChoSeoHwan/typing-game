@@ -50,13 +50,20 @@ const Game: FC = () => {
         dispatch(gameAction.startGame(questions.length));
     }, [dispatch, questions]);
 
-    // 점수 변경
-    const handleSetScore = useCallback(
-        (score) => () => {
-            dispatch(gameAction.setScore(score));
-        },
-        [dispatch]
-    );
+    // 오답 입력
+    const handleLose = useCallback(() => {
+        dispatch(gameAction.setScore(score - 1));
+    }, [dispatch, score]);
+
+    // 게임 종료
+    const handleEndGame = useCallback(() => {
+        dispatch(gameAction.finishGame());
+    }, [dispatch]);
+
+    // 게임 초기화
+    const handleResetGame = useCallback(() => {
+        dispatch(gameAction.resetGame());
+    }, [dispatch]);
 
     return (
         <>
@@ -68,8 +75,9 @@ const Game: FC = () => {
                 <Play
                     questions={questions}
                     score={score}
-                    onLose={handleSetScore(score - 1)}
-                    onWin={handleSetScore(score + 1)}
+                    onLose={handleLose}
+                    onEnd={handleEndGame}
+                    onReset={handleResetGame}
                 />
             )}
         </>

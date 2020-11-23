@@ -2,19 +2,22 @@ import { applyMiddleware, createStore, Reducer } from 'redux';
 import { ActionFromReducer, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import createSagaMiddleware from 'redux-saga';
-import { rootSaga } from 'sagas';
 
 import { gameReducer } from 'modules/GameModule';
+import { playReducer } from 'modules/PlayModule';
 import { questionsReducer } from 'modules/QuestionsModule';
 import { routerReducer } from 'modules/RouterModule';
 import { storeAction, storeReducer } from 'modules/StoreModule';
+
+import { rootSaga } from 'sagas';
 
 // combined reducer
 export const combinedReducer = combineReducers({
     storeReducer,
     routerReducer,
     questionsReducer,
-    gameReducer
+    gameReducer,
+    playReducer
 });
 
 export type RootReducerState = ReturnType<typeof combinedReducer>;
