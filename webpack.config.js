@@ -8,7 +8,7 @@ module.exports = {
     entry: path.join(__dirname, 'src', 'index.tsx'),
     output: {
         filename: 'bundle.js',
-        path: path.resolve(__dirname, './build')
+        path: path.resolve(__dirname, './public')
     },
     module: {
         rules: [
@@ -25,6 +25,35 @@ module.exports = {
                 test: /\.css$/,
                 exclude: /node_modules/,
                 use: ['style-loader', 'css-loader']
+            },
+
+            {
+                // write image files under 10k to inline or copy image files over 10k
+                test: /\.(jpg|jpeg|gif|png|svg|ico)?$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 10000,
+                            fallback: 'file-loader',
+                            name: 'images/[name].[ext]'
+                        }
+                    }
+                ]
+            },
+            {
+                // write files under 10k to inline or copy files over 10k
+                test: /\.(woff|woff2|eot|ttf|otf)$/,
+                use: [
+                    {
+                        loader: 'url-loader',
+                        options: {
+                            limit: 10000,
+                            fallback: 'file-loader',
+                            name: 'fonts/[name].[ext]'
+                        }
+                    }
+                ]
             }
         ]
     },
@@ -34,7 +63,7 @@ module.exports = {
     },
     plugins: [
         new HTMLWebpackPlugin({
-            template: './public/index.html'
+            template: './static/index.html'
         })
     ],
     devServer: {
