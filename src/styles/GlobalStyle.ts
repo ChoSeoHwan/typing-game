@@ -3,112 +3,56 @@ import { css } from '@emotion/core';
 import { GlobalTheme } from 'styles/Themes';
 
 export const GlobalStyle = (theme: GlobalTheme): ReturnType<typeof css> => css`
+    /* 
+ * Nanum Gothic (Korean) http://www.google.com/webfonts/earlyaccess
+ */
     @font-face {
-        font-family: 'Product Sans Regular';
+        font-family: 'Nanum Gothic';
         font-style: normal;
-        font-weight: normal;
-        src: local('Product Sans Regular'),
-            url('/static/fonts/ProductSans-Regular.woff') format('woff');
+        font-weight: 700;
+        src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.eot);
+        src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.eot?#iefix)
+                format('embedded-opentype'),
+            url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.woff2)
+                format('woff2'),
+            url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.woff)
+                format('woff'),
+            url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Bold.ttf)
+                format('truetype');
     }
-
     @font-face {
-        font-family: 'Product Sans Italic';
+        font-family: 'Nanum Gothic';
         font-style: normal;
-        font-weight: normal;
-        src: local('Product Sans Italic'),
-            url('/static/fonts/ProductSans-Italic.woff') format('woff');
+        font-weight: 400;
+        src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.eot);
+        src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.eot?#iefix)
+                format('embedded-opentype'),
+            url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.woff2)
+                format('woff2'),
+            url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.woff)
+                format('woff'),
+            url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-Regular.ttf)
+                format('truetype');
     }
-
     @font-face {
-        font-family: 'Product Sans Thin Regular';
+        font-family: 'Nanum Gothic';
         font-style: normal;
-        font-weight: normal;
-        src: local('Product Sans Thin Regular'),
-            url('/static/fonts/ProductSans-Thin.woff') format('woff');
-    }
-
-    @font-face {
-        font-family: 'Product Sans Light Regular';
-        font-style: normal;
-        font-weight: normal;
-        src: local('Product Sans Light Regular'),
-            url('/static/fonts/ProductSans-Light.woff') format('woff');
-    }
-
-    @font-face {
-        font-family: 'Product Sans Medium Regular';
-        font-style: normal;
-        font-weight: normal;
-        src: local('Product Sans Medium Regular'),
-            url('/static/fonts/ProductSans-Medium.woff') format('woff');
-    }
-
-    @font-face {
-        font-family: 'Product Sans Black Regular';
-        font-style: normal;
-        font-weight: normal;
-        src: local('Product Sans Black Regular'),
-            url('/static/fonts/ProductSans-Black.woff') format('woff');
-    }
-
-    @font-face {
-        font-family: 'Product Sans Thin Italic';
-        font-style: normal;
-        font-weight: normal;
-        src: local('Product Sans Thin Italic'),
-            url('/static/fonts/ProductSans-ThinItalic.woff') format('woff');
-    }
-
-    @font-face {
-        font-family: 'Product Sans Light Italic';
-        font-style: normal;
-        font-weight: normal;
-        src: local('Product Sans Light Italic'),
-            url('/static/fonts/ProductSans-LightItalic.woff') format('woff');
-    }
-
-    @font-face {
-        font-family: 'Product Sans Medium Italic';
-        font-style: normal;
-        font-weight: normal;
-        src: local('Product Sans Medium Italic'),
-            url('/static/fonts/ProductSans-MediumItalic.woff') format('woff');
-    }
-
-    @font-face {
-        font-family: 'Product Sans Bold';
-        font-style: normal;
-        font-weight: normal;
-        src: local('Product Sans Bold'),
-            url('/static/fonts/ProductSans-Bold.woff') format('woff');
-    }
-
-    @font-face {
-        font-family: 'Product Sans Bold Italic';
-        font-style: normal;
-        font-weight: normal;
-        src: local('Product Sans Bold Italic'),
-            url('/static/fonts/ProductSans-BoldItalic.woff') format('woff');
-    }
-
-    @font-face {
-        font-family: 'Product Sans Black Italic';
-        font-style: normal;
-        font-weight: normal;
-        src: local('Product Sans Black Italic'),
-            url('/static/fonts/ProductSans-BlackItalic.woff') format('woff');
-    }
-
-    @font-face {
-        font-family: 'NanumGothic';
-        src: url('/static/fonts/NanumGothic.eot');
-        src: url('/static/fonts/NanumGothic.eot') format('embedded-opentype'),
-            url('/static/fonts/NanumGothic.woff') format('woff');
+        font-weight: 800;
+        src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.eot);
+        src: url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.eot?#iefix)
+                format('embedded-opentype'),
+            url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.woff2)
+                format('woff2'),
+            url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.woff)
+                format('woff'),
+            url(//themes.googleusercontent.com/static/fonts/earlyaccess/nanumgothic/v3/NanumGothic-ExtraBold.ttf)
+                format('truetype');
     }
 
     html {
         font-size: 10px;
-        font-family: 'NanumGothic', 'Product Sans Regular', Roboto, Arial, serif;
+        font-family: 'Nanum Gothic', 'Product Sans Regular', Roboto, Arial,
+            serif;
     }
 
     body {
